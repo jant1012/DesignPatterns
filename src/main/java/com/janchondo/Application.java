@@ -3,6 +3,7 @@ package com.janchondo;
 import com.janchondo.creationalPatterns.prototype.Car;
 import com.janchondo.creationalPatterns.prototype.ModifiedCar;
 import com.janchondo.creationalPatterns.singleton.SingletonDatabase;
+import com.janchondo.structuralPatterns.decorator.*;
 import com.janchondo.structuralPatterns.facade.CheckFacade;
 
 import java.util.Scanner;
@@ -73,10 +74,15 @@ public class Application {
                         switch (structuralOption){
                             case 1:
                                 CheckFacade client = new CheckFacade();
-                                client.search("10/05/2022","10:00","Chihuahua","Cuauhtemoc");
+                                client.search("10/05/2021","10:00", "9:00","Chihuahua","Cuauhtemoc");
                                 break;
                             case 2:
-                                System.out.println("decorator");
+                                CarInterface nitro = new Nitro(new BasicCar());
+                                System.out.println(nitro.assemble());
+                                System.out.println("");
+                                CarInterface wheels = new Nitro(new Wheels(new BasicCar()));
+                                System.out.println(wheels.assemble());
+                                System.out.println("");
                                 break;
                             case 3:
                                 break;
