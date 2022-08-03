@@ -1,5 +1,6 @@
 package com.janchondo;
 
+import com.janchondo.behavioralPatterns.state.*;
 import com.janchondo.creationalPatterns.prototype.Car;
 import com.janchondo.creationalPatterns.prototype.ModifiedCar;
 import com.janchondo.creationalPatterns.singleton.SingletonDatabase;
@@ -13,6 +14,7 @@ public class Application {
         int option;
         int designOption;
         int structuralOption;
+        int behavioralOption;
         Scanner scan = new Scanner(System.in);
 
         do {
@@ -58,8 +60,6 @@ public class Application {
                                 System.out.println("Invalid Selection " + option);
                                 break;
                         }
-
-
                     } while (option != 3);
                     break;
                 case 2:
@@ -93,10 +93,38 @@ public class Application {
                     }while(structuralOption != 3);
                     break;
                 case 3:
+                    do {
+                        System.out.println("-------------------");
+                        System.out.println("Select an option: ");
+                        System.out.println("1.- State");
+                        System.out.println("2.- Decorator");
+                        System.out.println("3.- Exit");
+                        behavioralOption = scan.nextInt();
+
+                        switch (behavioralOption){
+                            case 1:
+                                ComputerContext computerState = new ComputerContext(new Sleeping());
+                                System.out.println(computerState.getState());
+
+                                computerState.setComputerState(new Running());
+                                System.out.println(computerState.getState());
+
+                                computerState.setComputerState(new TurnedOff());
+                                System.out.println(computerState.getState());
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            default:
+                                System.out.println("Invalid Selection " + behavioralOption);
+                                break;
+
+                        }
+                    }while(behavioralOption != 3);
                     break;
                 case 4:
                     System.out.println("Exit...");
-
             }
         }while(designOption != 4);
 
