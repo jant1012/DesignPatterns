@@ -1,5 +1,6 @@
 package com.janchondo;
 
+import com.janchondo.behavioralPatterns.observer.*;
 import com.janchondo.behavioralPatterns.state.*;
 import com.janchondo.creationalPatterns.prototype.Car;
 import com.janchondo.creationalPatterns.prototype.ModifiedCar;
@@ -7,6 +8,8 @@ import com.janchondo.creationalPatterns.singleton.SingletonDatabase;
 import com.janchondo.structuralPatterns.decorator.*;
 import com.janchondo.structuralPatterns.facade.CheckFacade;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Application {
@@ -74,7 +77,8 @@ public class Application {
                         switch (structuralOption){
                             case 1:
                                 CheckFacade client = new CheckFacade();
-                                client.search("10/05/2021","10:00", "9:00","Chihuahua","Cuauhtemoc");
+                                client.search("10/05/2021","10:00",
+                                        "9:00","Chihuahua","Cuauhtemoc");
                                 break;
                             case 2:
                                 CarInterface nitro = new Nitro(new BasicCar());
@@ -97,7 +101,7 @@ public class Application {
                         System.out.println("-------------------");
                         System.out.println("Select an option: ");
                         System.out.println("1.- State");
-                        System.out.println("2.- Decorator");
+                        System.out.println("2.- Observer");
                         System.out.println("3.- Exit");
                         behavioralOption = scan.nextInt();
 
@@ -113,13 +117,35 @@ public class Application {
                                 System.out.println(computerState.getState());
                                 break;
                             case 2:
+                                MessageSuscriberOne suscriberOne = new MessageSuscriberOne();
+                                MessageSuscriberTwo suscriberTwo = new MessageSuscriberTwo();
+                                VideoPublisher videoPublisher = new VideoPublisher();
+
+                                videoPublisher.register(suscriberOne);
+                                videoPublisher.register(suscriberTwo);
+
+                                List<String> showList = new ArrayList<>();
+                                showList = videoPublisher.notifyUpdate(new Message("New Video Uploaded"));
+
+                                for(String suscribers : showList){
+                                    System.out.println(suscribers);
+                                }
+
+                                videoPublisher.unregistrer(suscriberOne);
+                                MessageSuscriberThree suscriberThree = new MessageSuscriberThree();
+                                videoPublisher.register(suscriberThree);
+
+                                showList = videoPublisher.notifyUpdate(new Message("New Video Uploaded"));
+
+                                for(String suscribers : showList){
+                                    System.out.println(suscribers);
+                                }
                                 break;
                             case 3:
                                 break;
                             default:
                                 System.out.println("Invalid Selection " + behavioralOption);
                                 break;
-
                         }
                     }while(behavioralOption != 3);
                     break;
