@@ -9,6 +9,9 @@
 * [Structural Design](#structural-design)
   * [Decorator](#decorator)
   * [Facade](#facade)
+* [Behavioral Design](#behavioral-design)
+  * [State](#state)
+  * [Observer](#observer)
 * [Application](#application)
 
 ## Creational-Design
@@ -37,13 +40,30 @@
     2. Bus 
     3. Car
 
+## Behavioral-Design
+### State
+    /structuralPatterns/state
+    1. ComputerState
+    2. ComputerContext
+    3. Running
+    4. Sleeping
+    5. TurnedOff
+### Observer
+    /structuralPatterns/observer
+    1. Observer
+    2. Subject
+    3. Message
+    4. MessageSuscriberOne
+    5. MessageSuscriberTwo
+    6. MessageSuscriberThree
+    7. VideoPublisher
 ## Application
   
-    To run this application you have to run the main class called Application.
-    Once there you can see the menu where you have to select one option, 1. Creational designs, 2. Structural designs
-    and 3. Behavioral designs. 
+To run this application you have to run the main class called Application.
+Once there you can see the menu where you have to select one option, 1. Creational designs
+, 2. Structural designs and 3. Behavioral designs. 
     
-    After you has selected one option, you can see another menu and choice what pattern want to test.
+After you has selected one option, you can see another menu and choice what pattern want to test.
 
     1.Application
 
