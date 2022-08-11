@@ -1,7 +1,6 @@
 package com.janchondo.structuralPatterns.decorator;
 
 public class Wheels extends CarDecorator{
-
     public Wheels(CarInterface c) {
         super(c);
     }
