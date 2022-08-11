@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class VideoPublisherTest {
     @Test
     public void notifyUpdateTest(){
-        MessageSuscriberOne suscriberOne = new MessageSuscriberOne();
-        MessageSuscriberTwo suscriberTwo = new MessageSuscriberTwo();
+        MessageSubscriberOne suscriberOne = new MessageSubscriberOne();
+        MessageSubscriberTwo suscriberTwo = new MessageSubscriberTwo();
         VideoPublisher videoPublisher = new VideoPublisher();
 
         videoPublisher.register(suscriberOne);

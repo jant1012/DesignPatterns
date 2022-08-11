@@ -117,28 +117,28 @@ public class Application {
                                 System.out.println(computerState.getState());
                                 break;
                             case 2:
-                                MessageSuscriberOne suscriberOne = new MessageSuscriberOne();
-                                MessageSuscriberTwo suscriberTwo = new MessageSuscriberTwo();
+                                MessageSubscriberOne subscriberOne = new MessageSubscriberOne();
+                                MessageSubscriberTwo subscriberTwo = new MessageSubscriberTwo();
                                 VideoPublisher videoPublisher = new VideoPublisher();
 
-                                videoPublisher.register(suscriberOne);
-                                videoPublisher.register(suscriberTwo);
+                                videoPublisher.register(subscriberOne);
+                                videoPublisher.register(subscriberTwo);
 
-                                List<String> showList = new ArrayList<>();
+                                List<String> showList;
                                 showList = videoPublisher.notifyUpdate(new Message("New Video Uploaded"));
 
-                                for(String suscribers : showList){
-                                    System.out.println(suscribers);
+                                for(String subscribers : showList){
+                                    System.out.println(subscribers);
                                 }
 
-                                videoPublisher.unregistrer(suscriberOne);
-                                MessageSuscriberThree suscriberThree = new MessageSuscriberThree();
-                                videoPublisher.register(suscriberThree);
+                                videoPublisher.unregister(subscriberOne);
+                                MessageSubscriberThree subscriberThree = new MessageSubscriberThree();
+                                videoPublisher.register(subscriberThree);
 
                                 showList = videoPublisher.notifyUpdate(new Message("New Video Uploaded"));
 
-                                for(String suscribers : showList){
-                                    System.out.println(suscribers);
+                                for(String subscribers : showList){
+                                    System.out.println(subscribers);
                                 }
                                 break;
                             case 3:
